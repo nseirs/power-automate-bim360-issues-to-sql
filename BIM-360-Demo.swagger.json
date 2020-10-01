@@ -1,0 +1,755 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BIM 360 Demo",
+    "description": "BIM 360 Demo- by Sam Nseir",
+    "version": "1.0"
+  },
+  "host": "developer.api.autodesk.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/authentication/v1/authenticate": {},
+    "/project/v1/hubs": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Hub Id",
+                        "title": "Hub Id"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "Hub Name",
+                            "title": "Hub Name"
+                          },
+                          "region": {
+                            "type": "string",
+                            "description": "Hub Region",
+                            "title": "Hub Region"
+                          }
+                        },
+                        "description": "attributes"
+                      }
+                    }
+                  },
+                  "description": "data"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Hubs",
+        "description": "Returns a collection of accessible hubs for this member",
+        "operationId": "get_hubs",
+        "parameters": [],
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/project/v1/hubs/{hub_id}/projects": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "project id",
+                        "title": "Project Id"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "project name",
+                            "title": "Project Name"
+                          }
+                        },
+                        "description": "attributes"
+                      },
+                      "relationships": {
+                        "type": "object",
+                        "properties": {
+                          "issues": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Issue Container Id",
+                                    "title": "Issue Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "issues"
+                          },
+                          "submittals": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Submittals Container Id",
+                                    "title": "Submittals Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "submittals"
+                          },
+                          "rfis": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "RFIs Container Id",
+                                    "title": "RFIs Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "rfis"
+                          },
+                          "markups": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Markups Container Id",
+                                    "title": "Markups Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "markups"
+                          },
+                          "checklists": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Checklist Container Id",
+                                    "title": "Checklist Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "checklists"
+                          },
+                          "cost": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Cost Container Id",
+                                    "title": "Cost Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "cost"
+                          },
+                          "locations": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "Location Container Id",
+                                    "title": "Location Container Id"
+                                  }
+                                },
+                                "description": "data"
+                              }
+                            },
+                            "description": "locations"
+                          }
+                        },
+                        "description": "relationships"
+                      }
+                    }
+                  },
+                  "description": "data"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Hub Projects",
+        "description": "Returns a collection of projects for a given a hub_id",
+        "operationId": "get_hub_projects",
+        "parameters": [
+          {
+            "name": "hub_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-dynamic-values": {
+              "operationId": "get_hubs",
+              "value-path": "id",
+              "value-collection": "data",
+              "value-title": "attributes/name"
+            }
+          }
+        ],
+        "x-ms-visibility": "internal"
+      }
+    },
+    "/project/v1/hubs/{hub_id}/projects/{project_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Project Id",
+                      "title": "Project Id"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Project Name",
+                          "title": "Project Name"
+                        }
+                      },
+                      "description": "attributes"
+                    },
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "issues": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Issues Container Id",
+                                  "title": "Issues Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "issues"
+                        },
+                        "submittals": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Submittals Container Id",
+                                  "title": "Submittals Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "submittals"
+                        },
+                        "rfis": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "RFIs Container Id",
+                                  "title": "RFIs Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "rfis"
+                        },
+                        "markups": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Locations Container Id",
+                                  "title": "Locations Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "markups"
+                        },
+                        "checklists": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Checklists Container Id",
+                                  "title": "Checklists Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "checklists"
+                        },
+                        "cost": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Cost Container Id",
+                                  "title": "Cost Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "cost"
+                        },
+                        "locations": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Locations Container Id",
+                                  "title": "Locations Container Id"
+                                }
+                              },
+                              "description": "data"
+                            }
+                          },
+                          "description": "locations"
+                        }
+                      },
+                      "description": "relationships"
+                    }
+                  },
+                  "description": "data"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a Project",
+        "description": "Returns a project for a given project_id",
+        "operationId": "get_hub_project",
+        "parameters": [
+          {
+            "name": "hub_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-dynamic-values": {
+              "operationId": "get_hubs",
+              "value-path": "id",
+              "value-collection": "data",
+              "value-title": "attributes/name"
+            },
+            "description": "Select a Hub",
+            "x-ms-summary": "Hub Name"
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-ms-dynamic-values": {
+              "operationId": "get_hub_projects",
+              "value-path": "id",
+              "value-collection": "data",
+              "value-title": "attributes/name",
+              "parameters": {
+                "hub_id": {
+                  "parameter": "hub_id"
+                }
+              }
+            },
+            "description": "Select a Project",
+            "x-ms-summary": "Project Name"
+          }
+        ]
+      }
+    },
+    "/issues/v1/containers/{container_id}/quality-issues": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "id"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string",
+                            "description": "created_at"
+                          },
+                          "synced_at": {
+                            "type": "string",
+                            "description": "synced_at"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "description": "updated_at"
+                          },
+                          "close_version": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "close_version"
+                          },
+                          "closed_at": {
+                            "type": "string",
+                            "description": "closed_at"
+                          },
+                          "closed_by": {
+                            "type": "string",
+                            "description": "closed_by"
+                          },
+                          "created_by": {
+                            "type": "string",
+                            "description": "created_by"
+                          },
+                          "starting_version": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "starting_version"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "title"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "description"
+                          },
+                          "location_description": {
+                            "type": "string",
+                            "description": "location_description"
+                          },
+                          "target_urn": {
+                            "type": "string",
+                            "description": "target_urn"
+                          },
+                          "snapshot_urn": {
+                            "type": "string",
+                            "description": "snapshot_urn"
+                          },
+                          "target_urn_page": {
+                            "type": "string",
+                            "description": "target_urn_page"
+                          },
+                          "collection_urn": {
+                            "type": "string",
+                            "description": "collection_urn"
+                          },
+                          "due_date": {
+                            "type": "string",
+                            "description": "due_date"
+                          },
+                          "identifier": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "identifier"
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "status"
+                          },
+                          "assigned_to": {
+                            "type": "string",
+                            "description": "assigned_to"
+                          },
+                          "assigned_to_type": {
+                            "type": "string",
+                            "description": "assigned_to_type"
+                          },
+                          "answer": {
+                            "type": "string",
+                            "description": "answer"
+                          },
+                          "answered_at": {
+                            "type": "string",
+                            "description": "answered_at"
+                          },
+                          "answered_by": {
+                            "type": "string",
+                            "description": "answered_by"
+                          },
+                          "owner": {
+                            "type": "string",
+                            "description": "owner"
+                          },
+                          "issue_type_id": {
+                            "type": "string",
+                            "description": "issue_type_id"
+                          },
+                          "issue_type": {
+                            "type": "string",
+                            "description": "issue_type"
+                          },
+                          "issue_sub_type": {
+                            "type": "string",
+                            "description": "issue_sub_type"
+                          },
+                          "root_cause_id": {
+                            "type": "string",
+                            "description": "root_cause_id"
+                          },
+                          "root_cause": {
+                            "type": "string",
+                            "description": "root_cause"
+                          },
+                          "quality_urns": {
+                            "type": "array",
+                            "items": {},
+                            "description": "quality_urns"
+                          },
+                          "permitted_statuses": {
+                            "type": "array",
+                            "items": {},
+                            "description": "permitted_statuses"
+                          },
+                          "permitted_attributes": {
+                            "type": "array",
+                            "items": {},
+                            "description": "permitted_attributes"
+                          },
+                          "comment_count": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "comment_count"
+                          },
+                          "attachment_count": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "attachment_count"
+                          },
+                          "permitted_actions": {
+                            "type": "array",
+                            "items": {},
+                            "description": "permitted_actions"
+                          },
+                          "lbs_location": {
+                            "type": "string",
+                            "description": "lbs_location"
+                          },
+                          "ng_issue_subtype_id": {
+                            "type": "string",
+                            "description": "ng_issue_subtype_id"
+                          },
+                          "ng_issue_type_id": {
+                            "type": "string",
+                            "description": "ng_issue_type_id"
+                          },
+                          "custom_attributes": {
+                            "type": "array",
+                            "items": {},
+                            "description": "custom_attributes"
+                          },
+                          "trades": {
+                            "type": "string",
+                            "description": "trades"
+                          },
+                          "comments_attributes": {
+                            "type": "string",
+                            "description": "comments_attributes"
+                          },
+                          "attachments_attributes": {
+                            "type": "string",
+                            "description": "attachments_attributes"
+                          }
+                        },
+                        "description": "attributes"
+                      }
+                    }
+                  },
+                  "description": "data"
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "object",
+                      "properties": {
+                        "offset": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "offset"
+                        },
+                        "limit": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "limit"
+                        }
+                      },
+                      "description": "page"
+                    },
+                    "record_count": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "record_count"
+                    }
+                  },
+                  "description": "meta"
+                },
+                "links": {
+                  "type": "object",
+                  "properties": {
+                    "first": {
+                      "type": "string",
+                      "description": "first"
+                    },
+                    "last": {
+                      "type": "string",
+                      "description": "last"
+                    }
+                  },
+                  "description": "links"
+                }
+              }
+            }
+          }
+        },
+        "summary": "GET issues",
+        "description": "Retrieves information about all the BIM 360 issues in a project",
+        "operationId": "get_issues",
+        "parameters": [
+          {
+            "name": "container_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page[limit]",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "default": 100
+          },
+          {
+            "name": "page[offset]",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/vnd.api+json"
+          }
+        ]
+      }
+    },
+    "/issues/v1/containers/{container_id}/ng-issue-types": {}
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2_auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://developer.api.autodesk.com/authentication/v1/authorize",
+      "tokenUrl": "https://developer.api.autodesk.com/authentication/v1/gettoken",
+      "scopes": {
+        "bucket:create bucket:read bucket:update bucket:delete data:read data:write data:create viewables:read user:write user:read account:read account:write": "bucket:create bucket:read bucket:update bucket:delete data:read data:write data:create viewables:read user:write user:read account:read account:write"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2_auth": [
+        "bucket:create bucket:read bucket:update bucket:delete data:read data:write data:create viewables:read user:write user:read account:read account:write"
+      ]
+    }
+  ],
+  "tags": []
+}
