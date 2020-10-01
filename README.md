@@ -39,7 +39,7 @@ This is a custom connector and a flow package for [Microsoft Power Automate](htt
 * Enter a name for the custom connector (like "BIM 360 Data demo"), then navigate to the **JSON** file that was downloaded, and choose **Continue**
 ![](PushBIM360Issues_Create_Custom_Connector.jpg)
 * **(Optional)** Download [BIM-360-icon.jpg](BIM-360-icon.jpg), click **Upload connector icon**, and choose **BIM-360-icon.jpg**
-* Select **Security** tab, input **Client ID** and **Client Secret** from step 1, input **https://developer.api.autodesk.com/authentication/v1/refeshtoken** for **Refresh URL**, then click **Create connector**
+* Select **Security** tab, input **Client ID** and **Client Secret** from step 1, input `https://developer.api.autodesk.com/authentication/v1/refeshtoken` for **Refresh URL**, then click **Create connector**
 * When completed, copy the value from **Redirect URL**
 * Go to [Forge Portal](https://forge.autodesk.com), edit Forge App from step 1, and update the **Callback URL** with the custom connector **Redirect URL**
 
